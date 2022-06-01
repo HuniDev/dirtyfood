@@ -261,6 +261,7 @@ function App() {
 				justify='center'
 				background='#717BD9'
 				height='xsmall'
+				responsive='true'
 			>
 				<Heading
 					className='Heading'
@@ -294,7 +295,7 @@ function App() {
 				)}
 			</Box>
 
-			<Box align='center' pad='medium'>
+			<Box align='center' pad='medium' responsive='true'>
 				<ReactPaginate
 					previousLabel={'← Previous'}
 					nextLabel={'Next →'}
