@@ -14,7 +14,7 @@ const Posts = ({ posts, loading }) => {
 	}
 
 	return (
-		<Box direction='row-responsive' wrap='true' justify='center'>
+		<Box direction='row-responsive' wrap={true} justify='center'>
 			{posts.map(post => (
 				<Card margin='small' key={post.recall_number} width='medium'>
 					<CardHeader pad='small' background='light-2'>
