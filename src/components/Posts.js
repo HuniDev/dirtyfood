@@ -6,21 +6,27 @@ import {
 	Text,
 	Box,
 	Paragraph,
+	Heading,
 } from 'grommet';
 
 const Posts = ({ posts, loading }) => {
 	if (loading) {
-		return <h2>Loading...</h2>;
+		return <Heading margin='large'>Loading...</Heading>;
 	}
 
 	return (
-		<Box direction='row-responsive' wrap={true} justify='center'>
+		<Box direction='row-responsive' wrap={true} justify='center' margin='small'>
 			{posts.map(post => (
-				<Card margin='small' key={post.recall_number} width='medium'>
+				<Card
+					margin='small'
+					key={post.recall_number}
+					width='300px'
+					height='380px'
+				>
 					<CardHeader pad='small' background='light-2'>
 						{post.recalling_firm}
 					</CardHeader>
-					<CardBody pad='medium'>
+					<CardBody overflow='scroll' pad='medium'>
 						<Text weight='bold'> Distribution </Text>
 						<Paragraph>{post.distribution_pattern}</Paragraph>
 

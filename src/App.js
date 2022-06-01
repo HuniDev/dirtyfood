@@ -47,7 +47,7 @@ function App() {
 		setFilteredData(result);
 	};
 
-	const PER_PAGE = 12;
+	const PER_PAGE = 16;
 	const offset = currentPage * PER_PAGE;
 	const currentPosts = value
 		? filteredData.slice(offset, offset + PER_PAGE)
@@ -262,10 +262,16 @@ function App() {
 				background='#717BD9'
 				height='xsmall'
 			>
-				<Heading margin={{ left: '100px' }} size='medium' color='white'>
+				<Heading
+					className='Heading'
+					margin={{ left: '100px' }}
+					size='medium'
+					color='white'
+				>
 					Dirty Food
 				</Heading>
 				<Select
+					margin={{ left: 'auto', right: '25px' }}
 					id='select'
 					name='select'
 					placeholder='Filter'
@@ -281,7 +287,11 @@ function App() {
 			</Header>
 
 			<Box fill='horizontal' align='center'>
-				<Posts posts={currentPosts} loading={loading} />
+				{!loading && currentPosts >= 0 ? (
+					<Heading margin='large'>No Data</Heading>
+				) : (
+					<Posts posts={currentPosts} loading={loading} />
+				)}
 			</Box>
 
 			<Box align='center' pad='medium'>
