@@ -274,17 +274,14 @@ function App() {
 				background='#717BD9'
 				height='xsmall'
 				responsive='true'
+				sticky={true}
 			>
-				<Heading
-					className='Heading'
-					margin={{ left: '50px' }}
-					size='medium'
-					color='white'
-				>
+				<Heading className='Heading' margin={{ left: '50px' }} color='white'>
 					Dirty Food
 				</Heading>
 				<Select
 					margin={{ left: 'auto', right: '25px' }}
+					size='small'
 					id='select'
 					name='select'
 					placeholder='Filter'

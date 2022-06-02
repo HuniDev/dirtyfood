@@ -4,8 +4,14 @@
 
 .Heading {
 	font-family: 'Luckiest Guy';
+	font-size: large;
 }
 
+@media only screen and (max-width: 600px) {
+	.Heading {
+		font-size: small;
+	}
+}
 .pagination {
 	display: flex;
 	justify-content: center;
