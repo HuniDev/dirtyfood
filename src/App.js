@@ -269,12 +269,11 @@ function App() {
 	return (
 		<Grommet theme={theme}>
 			<Header
+				className='Header'
 				fill='horizontal'
 				justify='center'
 				background='#717BD9'
 				height='xsmall'
-				responsive='true'
-				sticky={true}
 			>
 				<Heading className='Heading' margin={{ left: '50px' }} color='white'>
 					Dirty Food

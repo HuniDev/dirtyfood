@@ -12,6 +12,11 @@
 		font-size: small;
 	}
 }
+
+.Header {
+	position: sticky;
+	top: 0;
+}
 .pagination {
 	display: flex;
 	justify-content: center;
