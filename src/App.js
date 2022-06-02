@@ -49,6 +49,7 @@ function App() {
 			data.distribution_pattern.includes(nextValue)
 		);
 		setFilteredData(result);
+		setCurrentPage(1);
 	};
 
 	const PER_PAGE = filteredData.length >= 16 ? 16 : filteredData.length;
