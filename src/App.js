@@ -54,7 +54,7 @@ function App() {
 	const PER_PAGE = filteredData.length >= 16 ? 16 : filteredData.length;
 	const offset = currentPage * PER_PAGE;
 	const currentPosts = () => {
-		if (value && filteredData.length >= 16) {
+		if (value && filteredData.length <= 16) {
 			return filteredData;
 		} else if (value && filteredData.length >= 16) {
 			return filteredData.slice(offset, offset + PER_PAGE);
