@@ -8,7 +8,8 @@
 
 .pagination {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
+	flex-direction: row;
 	list-style: none;
 	cursor: pointer;
 }

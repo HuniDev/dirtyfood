@@ -18,6 +18,10 @@ function App() {
 
 	const handlePageClick = ({ selected: selectedPage }) => {
 		setCurrentPage(selectedPage);
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
 	};
 
 	const [data, setData] = useState([]);
@@ -47,11 +51,18 @@ function App() {
 		setFilteredData(result);
 	};
 
-	const PER_PAGE = 16;
+	const PER_PAGE = filteredData.length >= 16 ? 16 : filteredData.length;
 	const offset = currentPage * PER_PAGE;
-	const currentPosts = value
-		? filteredData.slice(offset, offset + PER_PAGE)
-		: data.slice(offset, offset + PER_PAGE);
+	const currentPosts = () => {
+		if (value && filteredData.length >= 16) {
+			return filteredData;
+		} else if (value && filteredData.length >= 16) {
+			return filteredData.slice(offset, offset + PER_PAGE);
+		} else {
+			return data.slice(offset, offset + PER_PAGE);
+		}
+	};
+
 	const pageCount = value
 		? Math.ceil(filteredData.length / PER_PAGE)
 		: Math.ceil(data.length / PER_PAGE);
@@ -265,7 +276,7 @@ function App() {
 			>
 				<Heading
 					className='Heading'
-					margin={{ left: '100px' }}
+					margin={{ left: '50px' }}
 					size='medium'
 					color='white'
 				>
@@ -288,20 +299,22 @@ function App() {
 			</Header>
 
 			<Box fill='horizontal' align='center'>
-				{!loading && currentPosts >= 0 ? (
+				{pageCount.length === 0 ? (
 					<Heading margin='large'>No Data</Heading>
 				) : (
-					<Posts posts={currentPosts} loading={loading} />
+					<Posts posts={currentPosts()} loading={loading} />
 				)}
 			</Box>
 
-			<Box align='center' pad='medium' responsive='true'>
+			<Box justify='center' pad='medium' responsive={true}>
 				<ReactPaginate
-					previousLabel={'← Previous'}
-					nextLabel={'Next →'}
-					onPageChange={handlePageClick}
+					previousLabel={window.innerWidth > 600 ? '← Previous' : '← '}
+					nextLabel={window.innerWidth > 600 ? 'Next →' : '→'}
+					previousClassName='previous'
+					nextClassName='next'
 					pageCount={pageCount}
-					pageRangeDisplayed={5}
+					onPageChange={handlePageClick}
+					pageRangeDisplayed={3}
 					containerClassName={'pagination'}
 					previousLinkClassName={'pagination_link'}
 					nextLinkClassName={'pagination_link'}
